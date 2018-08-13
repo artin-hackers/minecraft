@@ -47,19 +47,19 @@ task prepareServer(type: Copy) {
 prepareServer.dependsOn compileServerJar
 
 
+task copyJar(type: Copy) {
+    from("build/libs")
+    include("hackers-plugin*.jar")
+    into "server/plugins"
+}
+
+copyJar.dependsOn build
+
+
 task runServer(type: Exec) {
     workingDir 'server'
 
     commandLine 'java'
     args=["-jar","craftbukkit-${CRAFTBUKKIT_VERSION}.jar"]
 }
-runServer.dependsOn build
-
-
-task copyJar(type: Copy) {
-    from(buildDir)
-    include("hackers-plugin*.jar")
-    into "server/plugin"
-}
-
 runServer.dependsOn copyJar
