@@ -1,4 +1,7 @@
 name: hackers-plugin
 version: "1.0-SNAPSHOT"
-author: Artin Hacker
+author: Zdenek Nemec
 main: cz.artin.hackers.HackersPlugin
+commands:
+  zombie:
+    description: Spawn a zombie
