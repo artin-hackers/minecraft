@@ -34,3 +34,6 @@ Nainstalovaná Java 8, git. Obojí přístupné s konzole.
 5. vývoj probíhá ve třídě: `src/main/java/cz/artin/hackers/HackersPlugin.java` 
     
     a v popisu pluginu: `src/main/resources/plugin.yml`
+    
+    
+    Vojtovo
