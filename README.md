@@ -9,7 +9,7 @@ Nainstalovaná Java 8, git. Obojí přístupné s konzole.
 
 1. naklonovat si projekt k sobě - spustit v konzoli příkaz:
    
-   `git clone git@github.com:artin-hackers/minecraft.git`
+   `git clone https://github.com/artin-hackers/minecraft.git`
 
 2. spustit ve složce, kam se projekt stáhl (bude to složka `minecraft`):
  
