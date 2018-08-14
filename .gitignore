@@ -1,6 +1,7 @@
-.idea/
+!server/eula.txt
 *.iml
 .gradle
-server/*
-!server/eula.txt
+.idea/
 build
+out/
+server/*
