@@ -4,4 +4,6 @@ author: Zdenek Nemec
 main: cz.artin.hackers.HackersPlugin
 commands:
   zombie:
-    description: Spawn a zombie
+    description: Spawns a zombie
+  chicken:
+    description: Spawns a chicken
