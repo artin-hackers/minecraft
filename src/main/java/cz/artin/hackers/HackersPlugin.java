@@ -1,6 +1,7 @@
 package cz.artin.hackers;
 
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Chicken;
@@ -34,18 +35,29 @@ public class HackersPlugin extends JavaPlugin {
                 LOG.info("Zombie spawned");
                 return true;
             }
-        } else if (label.equalsIgnoreCase("chicken")) {
+        } else if (label.equalsIgnoreCase("chickens")) {
             if (sender instanceof Player) {
                 Player player = (Player) sender;
                 final Location playerLocation = player.getLocation();
-                final Location zombieLocation = new Location(player.getWorld(),
-                        playerLocation.getX() + 5,
-                        playerLocation.getY(),
-                        playerLocation.getZ());
-                Chicken chicken = player.getWorld().spawn(zombieLocation, Chicken.class);
-                player.sendMessage("Chicken near you!");
-                LOG.info("Chicken spawned");
+                for (int i = 0; i < 5; i++) {
+                    final Location chickenLocation = new Location(player.getWorld(),
+                            playerLocation.getX() + 5,
+                            playerLocation.getY() + i,
+                            playerLocation.getZ());
+                    Chicken chicken = player.getWorld().spawn(chickenLocation, Chicken.class);
+                }
+                player.sendMessage("Chickens near you!");
+                LOG.info("Chickens spawned");
                 return true;
+            }
+        } else if (label.equalsIgnoreCase("water")) {
+            if (sender instanceof Player) {
+                Player player = (Player) sender;
+                final Location playerLocation = player.getLocation();
+                playerLocation.add(0, -1, 0);
+                playerLocation.getBlock().setType(Material.WATER);
+                player.sendMessage("Water!");
+                LOG.info("Creating water");
             }
         }
 

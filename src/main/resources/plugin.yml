@@ -5,5 +5,7 @@ main: cz.artin.hackers.HackersPlugin
 commands:
   zombie:
     description: Spawns a zombie
-  chicken:
-    description: Spawns a chicken
+  chickens:
+    description: Spawns a group of chickens
+  water:
+    descriprion: Changes block under the player into a water
