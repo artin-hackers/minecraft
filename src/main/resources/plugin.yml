@@ -9,3 +9,9 @@ commands:
     description: Spawns a group of chickens
   water:
     descriprion: Changes block under the player into a water
+  house:
+    description: Builds a house around the player
+  day:
+    description: Sets day-time
+  plain:
+    description: Creates a plain
