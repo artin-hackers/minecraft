@@ -3,8 +3,6 @@ package cz.artin.hackers;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockFace;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Chicken;
@@ -16,7 +14,14 @@ import java.util.logging.Logger;
 
 
 public class HackersPlugin extends JavaPlugin {
-    public static final Logger LOG = Logger.getLogger(HackersPlugin.class.getName());
+    private static final Logger LOG = Logger.getLogger(HackersPlugin.class.getName());
+    private enum directions {
+        NORTH,
+        EAST,
+        SOUTH,
+        WEST,
+        ERROR
+    }
 
     @Override
     public void onEnable() {
@@ -25,19 +30,8 @@ public class HackersPlugin extends JavaPlugin {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (label.equalsIgnoreCase("zombie")) {
-            if (sender instanceof Player) {
-                Player player = (Player) sender;
-                final Location playerLocation = player.getLocation();
-                final Location zombieLocation = new Location(player.getWorld(),
-                        playerLocation.getX() + 5,
-                        playerLocation.getY(),
-                        playerLocation.getZ());
-                Zombie zombie = player.getWorld().spawn(zombieLocation, Zombie.class);
-                player.sendMessage("Zombie near you!");
-                LOG.info("Zombie spawned");
-                return true;
-            }
+        if (label.equalsIgnoreCase("spawnZombie")) {
+            return spawnZombie(sender);
         } else if (label.equalsIgnoreCase("chickens")) {
             if (sender instanceof Player) {
                 Player player = (Player) sender;
@@ -205,5 +199,51 @@ public class HackersPlugin extends JavaPlugin {
         }
 
         return false;
+    }
+
+    private boolean spawnZombie(CommandSender sender) {
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
+            final Location playerLocation = player.getLocation();
+            final Location zombieLocation = new Location(
+                    player.getWorld(),
+                    playerLocation.getX(),
+                    playerLocation.getY(),
+                    playerLocation.getZ()
+            );
+            final directions direction = getDirection(sender);
+            if (direction == directions.NORTH) {
+                zombieLocation.add(0, 0, -5);
+            } else if (direction == directions.EAST) {
+                zombieLocation.add(5, 0, 0);
+            } else if (direction == directions.SOUTH) {
+                zombieLocation.add(0, 0, 5);
+            } else if (direction == directions.WEST) {
+                zombieLocation.add(-5, 0, 0);
+            } else {
+                LOG.info("Error: spawnZombie()");
+                return false;
+            }
+            Zombie zombie = player.getWorld().spawn(zombieLocation, Zombie.class);
+            return true;
+        }
+        return false;
+    }
+
+    private directions getDirection(CommandSender sender) {
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
+            int rotation = Math.round(player.getLocation().getYaw() + 270) % 360;
+            if (rotation >= 45 && rotation < 135) {
+                return directions.NORTH;
+            } else if (rotation >= 135 && rotation < 225) {
+                return directions.EAST;
+            } else if (rotation >= 225 && rotation < 315) {
+                return directions.SOUTH;
+            } else {
+                return directions.WEST;
+            }
+        }
+        return directions.ERROR;
     }
 }

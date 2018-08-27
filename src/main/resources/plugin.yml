@@ -3,7 +3,7 @@ version: "1.0-SNAPSHOT"
 author: Zdenek Nemec
 main: cz.artin.hackers.HackersPlugin
 commands:
-  zombie:
+  spawnZombie:
     description: Spawns a zombie
   chickens:
     description: Spawns a group of chickens
