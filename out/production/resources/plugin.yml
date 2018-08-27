@@ -3,10 +3,8 @@ version: "1.0-SNAPSHOT"
 author: xvojta
 main: cz.artin.hackers.HackersPlugin
 
-commands:
+comands:
   zombie:
     description: Spawns a zombie
   chicken:
     description: Spawns a chicken
-  house:
-    description: Build a house
