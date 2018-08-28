@@ -29,19 +29,12 @@ public class HackersPlugin extends JavaPlugin {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (label.equalsIgnoreCase("spawnZombie")) {
+        if (label.equalsIgnoreCase("createPool")) {
+            return createPool(sender);
+        } else if (label.equalsIgnoreCase("spawnZombie")) {
             return spawnZombie(sender);
         } else if (label.equalsIgnoreCase("spawnChickens")) {
             return spawnChickens(sender);
-        } else if (label.equalsIgnoreCase("water")) {
-            if (sender instanceof Player) {
-                Player player = (Player) sender;
-                final Location playerLocation = player.getLocation();
-                playerLocation.add(0, -1, 0);
-                playerLocation.getBlock().setType(Material.WATER);
-                player.sendMessage("Water!");
-                LOG.info("Creating water");
-            }
         } else if (label.equalsIgnoreCase("house")) {
             if (sender instanceof Player) {
                 Player player = (Player) sender;
@@ -187,6 +180,44 @@ public class HackersPlugin extends JavaPlugin {
         return false;
     }
 
+    private boolean createPool(CommandSender sender) {
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
+            for (int i = -1; i <= 1; i++) {
+                for (int j = -1; j <= 1; j++) {
+                    Location waterLocation = player.getLocation().clone();
+                    waterLocation.add(i, -1, j);
+                    waterLocation.getBlock().setType(Material.WATER);
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+    private boolean spawnChickens(CommandSender sender) {
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
+            for (int i = 0; i < 5; i++) {
+                Location chickenLocation = putInView(sender, 4);
+                chickenLocation.add(0, i, 0);
+                Chicken chicken = player.getWorld().spawn(chickenLocation, Chicken.class);
+            }
+            return true;
+        }
+        return false;
+    }
+
+    private boolean spawnZombie(CommandSender sender) {
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
+            Location zombieLocation = putInView(sender, 5);
+            Zombie zombie = player.getWorld().spawn(zombieLocation, Zombie.class);
+            return true;
+        }
+        return false;
+    }
+
     private directions getDirection(CommandSender sender) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
@@ -224,28 +255,5 @@ public class HackersPlugin extends JavaPlugin {
             return location;
         }
         return null;
-    }
-
-    private boolean spawnChickens(CommandSender sender) {
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
-            for (int i = 0; i < 5; i++) {
-                Location chickenLocation = putInView(sender, 4);
-                chickenLocation.add(0, i, 0);
-                Chicken chicken = player.getWorld().spawn(chickenLocation, Chicken.class);
-            }
-            return true;
-        }
-        return false;
-    }
-
-    private boolean spawnZombie(CommandSender sender) {
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
-            Location zombieLocation = putInView(sender, 5);
-            Zombie zombie = player.getWorld().spawn(zombieLocation, Zombie.class);
-            return true;
-        }
-        return false;
     }
 }
