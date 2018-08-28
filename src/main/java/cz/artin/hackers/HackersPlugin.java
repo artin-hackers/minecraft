@@ -10,7 +10,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.entity.Zombie;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import javax.swing.text.Position;
 import java.util.logging.Logger;
 
 
@@ -26,68 +25,22 @@ public class HackersPlugin extends JavaPlugin {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (label.equalsIgnoreCase("zombie")) {
             if (sender instanceof Player) {
-                Player player = (Player) sender;
-                final Location playerLocation = player.getLocation();
-                final Location zombieLocation = new Location(player.getWorld(),
-                        playerLocation.getX() + 5,
-                        playerLocation.getY(),
-                        playerLocation.getZ());
-                Zombie zombie = player.getWorld().spawn(zombieLocation, Zombie.class);
-                player.sendMessage("Zombie near you!");
-                LOG.info("Zombie spawned");
+                spawnZombie((Player) sender);
                 return true;
             }
         } else if (label.equalsIgnoreCase("chicken")) {
             if (sender instanceof Player) {
-                Player player = (Player) sender;
-                final Location playerLocation = player.getLocation();
-                final Location chickenLocation = new Location(player.getWorld(),
-                        playerLocation.getX() + 5,
-                        playerLocation.getY(),
-                        playerLocation.getZ());
-                Chicken chicken = player.getWorld().spawn(chickenLocation, Chicken.class);
-                player.sendMessage("Chicken near you!");
-                LOG.info("Chicken spawned");
+                spawnChicken((Player) sender);
                 return true;
             }
-        } else if (label.equalsIgnoreCase("chicken")) {
-            if (sender instanceof Player) {
-                Player player = (Player) sender;
-                final Location playerLocation = player.getLocation();
-                final Location chickenLocation = new Location(player.getWorld(),
-                        playerLocation.getX() + 5,
-                        playerLocation.getY(),
-                        playerLocation.getZ());
-                Chicken chicken = player.getWorld().spawn(chickenLocation, Chicken.class);
-                player.sendMessage("Chicken near you!");
-                LOG.info("Chicken spawned");
-                return true;
-            }
-
         } else if (label.equalsIgnoreCase("house")) {
             if (sender instanceof Player) {
                 Player player = (Player) sender;
                 final Location playerLocation = player.getLocation();
-                buildFloor(playerLocation);
-                buildRoof(playerLocation);
-                playerLocation.add(-2, -1, 2);
-                buildWallX(playerLocation);
-                playerLocation.add(2, 0, -2);
-                playerLocation.add(-2, 0, -2);
-                buildWallX(playerLocation);
-                buildWallZ(playerLocation);
-                playerLocation.add(2, 0, 2);
-                playerLocation.add(2, 0, -2);
-                buildWallZ(playerLocation);
-                playerLocation.add(-2, 1, 2);
-                buildDoor(playerLocation);
-                buildRoad(playerLocation);
-                buildDecorations(playerLocation);
-
-
+                buildHouse(playerLocation);
                 return true;
-    }
-}
+            }
+        }
         return false;
     }
 
@@ -194,6 +147,46 @@ public class HackersPlugin extends JavaPlugin {
         playerLocation.getBlock().setType(Material.AIR);
         playerLocation.add(0, 1, 0);
         playerLocation.getBlock().setType(Material.DARK_OAK_TRAPDOOR);
+    }
+
+    void buildHouse (Location playerLocation) {
+        buildFloor(playerLocation);
+        buildRoof(playerLocation);
+        playerLocation.add(-2, -1, 2);
+        buildWallX(playerLocation);
+        playerLocation.add(2, 0, -2);
+        playerLocation.add(-2, 0, -2);
+        buildWallX(playerLocation);
+        buildWallZ(playerLocation);
+        playerLocation.add(2, 0, 2);
+        playerLocation.add(2, 0, -2);
+        buildWallZ(playerLocation);
+        playerLocation.add(-2, 1, 2);
+        buildDoor(playerLocation);
+        buildRoad(playerLocation);
+        buildDecorations(playerLocation);
+    }
+
+    void spawnZombie(Player player) {
+        final Location playerLocation = player.getLocation();
+        final Location zombieLocation = new Location(player.getWorld(),
+       playerLocation.getX() + 5,
+        playerLocation.getY(),
+        playerLocation.getZ());
+        Zombie zombie = player.getWorld().spawn(zombieLocation, Zombie.class);
+        player.sendMessage("Zombie near you!");
+        LOG.info("Zombie spawned");
+    }
+
+    void spawnChicken (Player player) {
+        final Location playerLocation = player.getLocation();
+        final Location chickenLocation = new Location(player.getWorld(),
+        playerLocation.getX() + 5,
+        playerLocation.getY(),
+        playerLocation.getZ());
+        Chicken chicken = player.getWorld().spawn(chickenLocation, Chicken.class);
+        player.sendMessage("Chicken near you!");
+        LOG.info("Chicken spawned");
     }
 
 }
