@@ -3,12 +3,12 @@ version: "1.0-SNAPSHOT"
 author: Zdenek Nemec
 main: cz.artin.hackers.HackersPlugin
 commands:
+  createPool:
+    description: Creates a pool beneath the player
   spawnChickens:
     description: Spawns a group of chickens
   spawnZombie:
     description: Spawns a zombie
-  water:
-    descriprion: Changes block under the player into a water
   house:
     description: Builds a house around the player
   day:
