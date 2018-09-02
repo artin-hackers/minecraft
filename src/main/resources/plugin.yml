@@ -5,13 +5,15 @@ main: cz.artin.hackers.HackersPlugin
 commands:
   createPool:
     description: Creates a pool beneath the player
+  setCasual:
+    description: Sets casual environment
+  setNighmare:
+    description: Sets nightmarish environment
   spawnChickens:
     description: Spawns a group of chickens
   spawnZombie:
     description: Spawns a zombie
   house:
     description: Builds a house around the player
-  day:
-    description: Sets day-time
   plain:
     description: Creates a plain

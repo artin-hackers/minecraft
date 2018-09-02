@@ -31,6 +31,10 @@ public class HackersPlugin extends JavaPlugin {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (label.equalsIgnoreCase("createPool")) {
             return createPool(sender);
+        } else if (label.equalsIgnoreCase("setCasual")) {
+            return setCasual(sender);
+        } else if (label.equalsIgnoreCase("setNighmare")) {
+            return setNightmare(sender);
         } else if (label.equalsIgnoreCase("spawnZombie")) {
             return spawnZombie(sender);
         } else if (label.equalsIgnoreCase("spawnChickens")) {
@@ -193,6 +197,28 @@ public class HackersPlugin extends JavaPlugin {
             return true;
         }
         return false;
+    }
+
+    private boolean setCasual(CommandSender sender) {
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
+            for (World world : this.getServer().getWorlds()) {
+                world.setTime(1000);
+                world.setStorm(false);
+            }
+        }
+        return true;
+    }
+
+    private boolean setNightmare(CommandSender sender) {
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
+            for (World world : this.getServer().getWorlds()) {
+                world.setTime(18000);
+                world.setStorm(true);
+            }
+        }
+        return true;
     }
 
     private boolean spawnChickens(CommandSender sender) {
