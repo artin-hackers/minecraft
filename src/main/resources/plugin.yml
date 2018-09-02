@@ -3,6 +3,8 @@ version: "1.0-SNAPSHOT"
 author: Zdenek Nemec
 main: cz.artin.hackers.HackersPlugin
 commands:
+  createHouse:
+    description: Creates a house
   createPlain:
     description: Creates a plain
   createPool:
@@ -15,5 +17,3 @@ commands:
     description: Spawns a group of chickens
   spawnZombie:
     description: Spawns a zombie
-  house:
-    description: Builds a house around the player
