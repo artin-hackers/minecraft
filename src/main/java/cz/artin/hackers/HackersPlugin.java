@@ -29,7 +29,9 @@ public class HackersPlugin extends JavaPlugin {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (label.equalsIgnoreCase("createPool")) {
+        if (label.equalsIgnoreCase("createPlain")) {
+            return createPlain(sender);
+        } else if (label.equalsIgnoreCase("createPool")) {
             return createPool(sender);
         } else if (label.equalsIgnoreCase("setCasual")) {
             return setCasual(sender);
@@ -149,39 +151,28 @@ public class HackersPlugin extends JavaPlugin {
                 player.sendMessage("Look! A house.");
                 LOG.info("Creating a house");
             }
-        } else if (label.equalsIgnoreCase("day")) {
-            if (sender instanceof Player) {
-                Player player = (Player) sender;
-                for (World world : this.getServer().getWorlds()) {
-                    world.setStorm(false);
-                    if (world.getTime() >= 13000) {
-                        world.setTime(0);
-                    }
-                }
-                player.sendMessage("New day!");
-                LOG.info("Setting day");
-            }
-        } else if (label.equalsIgnoreCase("plain")) {
-            if (sender instanceof Player) {
-                Player player = (Player) sender;
-                final Location playerLocation = player.getLocation();
-                for (int x = -20; x <= 20; x++) {
-                    for (int y = 0; y <= 10; y++) {
-                        for (int z = -20; z <= 20; z++) {
-                            final Location blockLocation = new Location(player.getWorld(),
-                                    playerLocation.getX() + x,
-                                    playerLocation.getY() + y,
-                                    playerLocation.getZ() + z);
-                            blockLocation.getBlock().setType(Material.AIR);
-                        }
-                    }
-                }
-                player.sendMessage("Destroyer!");
-                LOG.info("Creating a plain");
-            }
         }
 
         return false;
+    }
+
+    private boolean createPlain(CommandSender sender) {
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
+            final Location playerLocation = player.getLocation();
+            for (int x = -10; x <= 10; x++) {
+                for (int y = 0; y <= 10; y++) {
+                    for (int z = -10; z <= 10; z++) {
+                        final Location blockLocation = new Location(player.getWorld(),
+                                playerLocation.getX() + x,
+                                playerLocation.getY() + y,
+                                playerLocation.getZ() + z);
+                        blockLocation.getBlock().setType(Material.AIR);
+                    }
+                }
+            }
+        }
+        return true;
     }
 
     private boolean createPool(CommandSender sender) {
