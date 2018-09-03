@@ -9,6 +9,14 @@ commands:
     description: Creates a plain
   createPool:
     description: Creates a pool beneath the player
+  equipAxe:
+    description: Equips the Axe of Fire
+  equipPickaxe:
+    description: Equips the Picaxe of Death
+  equipShovel:
+    description: Equips the Shovel of Earth
+  equipSword:
+    description: Equips the Sword of Virtue
   setCasual:
     description: Sets casual environment
   setNighmare:
