@@ -9,10 +9,10 @@ import org.bukkit.entity.Chicken;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Zombie;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.logging.Logger;
-
-import cz.artin.hackers.House;
 
 public class HackersPlugin extends JavaPlugin {
     private static final Logger LOG = Logger.getLogger(HackersPlugin.class.getName());
@@ -26,6 +26,7 @@ public class HackersPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         getLogger().info("Loading Hackers plugin...");
+        getServer().getPluginManager().registerEvents(new MagicListener(), this);
     }
 
     @Override
@@ -37,6 +38,25 @@ public class HackersPlugin extends JavaPlugin {
             return createPlain(sender);
         } else if (label.equalsIgnoreCase("createPool")) {
             return createPool(sender);
+        } else if (label.equalsIgnoreCase("equipAxe")) {
+            if (sender instanceof Player) {
+                Player me = (Player) sender;
+                ItemStack axe = new ItemStack(Material.DIAMOND_AXE, 1);
+                ItemMeta meta = axe.getItemMeta();
+                meta.setDisplayName("Axe of Fire");
+                axe.setItemMeta(meta);
+                me.getInventory().addItem(axe);
+                return true;
+            }
+        } else if (label.equalsIgnoreCase("equipPickaxe")) {
+            LOG.info("Error: Pickaxe of Death is not implemented yet!");
+            return true;
+        } else if (label.equalsIgnoreCase("equipShovel")) {
+            LOG.info("Error: Shovel of Earth is not implemented yet!");
+            return true;
+        } else if (label.equalsIgnoreCase("equipSword")) {
+            LOG.info("Error: Sword of Virtue is not implemented yet!");
+            return true;
         } else if (label.equalsIgnoreCase("setCasual")) {
             return setCasual(sender);
         } else if (label.equalsIgnoreCase("setNighmare")) {
