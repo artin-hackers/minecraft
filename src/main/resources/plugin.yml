@@ -10,3 +10,5 @@ commands:
     description: Spawns a chicken
   house:
     description: Build a house
+  gun:
+    description: Give gun
