@@ -12,7 +12,7 @@ commands:
   equipAxe:
     description: Equips the Axe of Fire
   equipPickaxe:
-    description: Equips the Picaxe of Death
+    description: Equips the Picaxe of Dead
   equipShovel:
     description: Equips the Shovel of Earth
   equipSword:
