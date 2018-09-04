@@ -5,23 +5,16 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Chicken;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Zombie;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
 import java.util.logging.Logger;
+
+import cz.artin.hackers.Spawns;
 
 public class HackersPlugin extends JavaPlugin {
     private static final Logger LOG = Logger.getLogger(HackersPlugin.class.getName());
-    private enum directions {
-        NORTH,
-        EAST,
-        SOUTH,
-        WEST
-    }
 
     @Override
     public void onEnable() {
@@ -49,11 +42,25 @@ public class HackersPlugin extends JavaPlugin {
                 return true;
             }
         } else if (label.equalsIgnoreCase("equipPickaxe")) {
-            LOG.info("Error: Pickaxe of Death is not implemented yet!");
-            return true;
+            if (sender instanceof Player) {
+                Player me = (Player) sender;
+                ItemStack axe = new ItemStack(Material.DIAMOND_PICKAXE, 1);
+                ItemMeta meta = axe.getItemMeta();
+                meta.setDisplayName("Pickaxe of Dead");
+                axe.setItemMeta(meta);
+                me.getInventory().addItem(axe);
+                return true;
+            }
         } else if (label.equalsIgnoreCase("equipShovel")) {
-            LOG.info("Error: Shovel of Earth is not implemented yet!");
-            return true;
+            if (sender instanceof Player) {
+                Player me = (Player) sender;
+                ItemStack axe = new ItemStack(Material.DIAMOND_SHOVEL, 1);
+                ItemMeta meta = axe.getItemMeta();
+                meta.setDisplayName("Shovel of Earth");
+                axe.setItemMeta(meta);
+                me.getInventory().addItem(axe);
+                return true;
+            }
         } else if (label.equalsIgnoreCase("equipSword")) {
             LOG.info("Error: Sword of Virtue is not implemented yet!");
             return true;
@@ -62,9 +69,11 @@ public class HackersPlugin extends JavaPlugin {
         } else if (label.equalsIgnoreCase("setNighmare")) {
             return setNightmare(sender);
         } else if (label.equalsIgnoreCase("spawnZombie")) {
-            return spawnZombie(sender);
+            Spawns spawns = new Spawns();
+            return spawns.spawnZombie(sender);
         } else if (label.equalsIgnoreCase("spawnChickens")) {
-            return spawnChickens(sender);
+            Spawns spawns = new Spawns();
+            return spawns.spawnChickens(sender);
         }
         return false;
     }
@@ -124,67 +133,4 @@ public class HackersPlugin extends JavaPlugin {
         }
         return true;
     }
-
-    private boolean spawnChickens(CommandSender sender) {
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
-            for (int i = 0; i < 5; i++) {
-                Location chickenLocation = putInView(sender, 4);
-                chickenLocation.add(0, i, 0);
-                Chicken chicken = player.getWorld().spawn(chickenLocation, Chicken.class);
-            }
-            return true;
-        }
-        return false;
-    }
-
-    private boolean spawnZombie(CommandSender sender) {
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
-            Location zombieLocation = putInView(sender, 5);
-            Zombie zombie = player.getWorld().spawn(zombieLocation, Zombie.class);
-            return true;
-        }
-        return false;
-    }
-
-    private directions getDirection(CommandSender sender) {
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
-            int rotation = Math.round(player.getLocation().getYaw() + 270) % 360;
-            if (rotation >= 45 && rotation < 135) {
-                return directions.NORTH;
-            } else if (rotation >= 135 && rotation < 225) {
-                return directions.EAST;
-            } else if (rotation >= 225 && rotation < 315) {
-                return directions.SOUTH;
-            } else {
-                return directions.WEST;
-            }
-        }
-        return null;
-    }
-
-    private Location putInView(CommandSender sender, int distance) {
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
-            Location location = player.getLocation().clone();
-            directions direction = getDirection(sender);
-            if (direction == directions.NORTH) {
-                location.add(0, 0, -distance);
-            } else if (direction == directions.EAST) {
-                location.add(distance, 0, 0);
-            } else if (direction == directions.SOUTH) {
-                location.add(0, 0, distance);
-            } else if (direction == directions.WEST) {
-                location.add(-distance, 0, 0);
-            } else {
-                LOG.info("Error: putInView()");
-                return null;
-            }
-            return location;
-        }
-        return null;
-    }
-
 }
