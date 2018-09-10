@@ -39,21 +39,21 @@ public class HackersPlugin extends JavaPlugin {
         }else if(label.equalsIgnoreCase("snowwand")) {
             if (sender instanceof Player) {
                 Player me = (Player) sender;
-                ItemStack axe = new ItemStack(Material.STICK, 1);
-                ItemMeta meta = axe.getItemMeta();
+                ItemStack wand = new ItemStack(Material.STICK, 1);
+                ItemMeta meta = wand.getItemMeta();
                 meta.setDisplayName("Wand of Snow");
-                axe.setItemMeta(meta);
-                me.getInventory().addItem(axe);
+                wand.setItemMeta(meta);
+                me.getInventory().addItem(wand);
                 return true;
             }
         }else if(label.equalsIgnoreCase("firewand")) {
             if (sender instanceof Player) {
                 Player me = (Player) sender;
-                ItemStack axe = new ItemStack(Material.STICK, 1);
-                ItemMeta meta = axe.getItemMeta();
+                ItemStack wand = new ItemStack(Material.STICK, 1);
+                ItemMeta meta = wand.getItemMeta();
                 meta.setDisplayName("Wand of Fire");
-                axe.setItemMeta(meta);
-                me.getInventory().addItem(axe);
+                wand.setItemMeta(meta);
+                me.getInventory().addItem(wand);
                 return true;
             }
         }else if (label.equalsIgnoreCase("house")) {
