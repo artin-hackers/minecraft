@@ -45,18 +45,30 @@ public class HackersPlugin extends JavaPlugin {
                 axe.setItemMeta(meta);
                 me.getInventory().addItem(axe);
                 return true;
-            }else if (label.equalsIgnoreCase("house")) {
-                if (sender instanceof Player) {
+            }
+        }else if(label.equalsIgnoreCase("firewand")) {
+            if (sender instanceof Player) {
+                Player me = (Player) sender;
+                ItemStack axe = new ItemStack(Material.STICK, 1);
+                ItemMeta meta = axe.getItemMeta();
+                meta.setDisplayName("Wand of Fire");
+                axe.setItemMeta(meta);
+                me.getInventory().addItem(axe);
+                return true;
+            }
+        }else if (label.equalsIgnoreCase("house")) {
+            if (sender instanceof Player) {
                     Player player = (Player) sender;
                     final Location playerLocation = player.getLocation();
                     House house = new House(playerLocation);
                     house.buildHouse();
                     return true;
-                }
             }
         }
         return false;
     }
+
+
 
 
     void spawnZombie(Player player) {
