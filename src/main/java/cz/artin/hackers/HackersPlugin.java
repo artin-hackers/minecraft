@@ -36,7 +36,7 @@ public class HackersPlugin extends JavaPlugin {
                 spawnChicken((Player) sender);
                 return true;
             }
-        }else if(label.equalsIgnoreCase("MagicWand")) {
+        }else if(label.equalsIgnoreCase("firewand")) {
             if (sender instanceof Player) {
                 Player me = (Player) sender;
                 ItemStack axe = new ItemStack(Material.STICK, 1);
@@ -67,7 +67,6 @@ public class HackersPlugin extends JavaPlugin {
         player.sendMessage("Zombie near you!");
         LOG.info("Zombie spawned");
     }
-
     void spawnChicken (Player player) {
         final Location playerLocation = player.getLocation();
         final Location chickenLocation = new Location(player.getWorld(),

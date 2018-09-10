@@ -8,5 +8,5 @@ commands:
     description: Spawn a zombie
   chicken:
     description: Get you a perfect meal
-  MagicWand:
-    description: Get you a magic wand
+  firewand:
+    description: Get you a fire wand
