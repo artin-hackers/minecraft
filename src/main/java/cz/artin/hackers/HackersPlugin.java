@@ -36,12 +36,12 @@ public class HackersPlugin extends JavaPlugin {
                 spawnChicken((Player) sender);
                 return true;
             }
-        }else if(label.equalsIgnoreCase("firewand")) {
+        }else if(label.equalsIgnoreCase("snowwand")) {
             if (sender instanceof Player) {
                 Player me = (Player) sender;
                 ItemStack axe = new ItemStack(Material.STICK, 1);
                 ItemMeta meta = axe.getItemMeta();
-                meta.setDisplayName("Wand of Fire");
+                meta.setDisplayName("Wand of Snow");
                 axe.setItemMeta(meta);
                 me.getInventory().addItem(axe);
                 return true;

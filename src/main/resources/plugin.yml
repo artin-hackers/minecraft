@@ -10,3 +10,5 @@ commands:
     description: Get you a perfect meal
   firewand:
     description: Get you a fire wand
+  icewand:
+    description: Get you a ice wand

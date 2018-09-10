@@ -1,6 +1,7 @@
 package cz.artin.hackers;
 
 import org.bukkit.entity.Fireball;
+import org.bukkit.entity.Snowball;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -16,6 +17,10 @@ public class MagicListener implements Listener{
             if (itemInMainHand != null && itemInMainHand.getItemMeta() != null) {
                 if (itemInMainHand.getItemMeta().getDisplayName().equals("Wand of Fire")) {
                     event.getPlayer().launchProjectile(Fireball.class);
+
+                }
+                if (itemInMainHand.getItemMeta().getDisplayName().equals("Wand of Snow")) {
+                    event.getPlayer().launchProjectile(Snowball.class);
 
                 }
             }
