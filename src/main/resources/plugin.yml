@@ -3,10 +3,10 @@ version: "1.0-SNAPSHOT"
 author: Artin Hacker
 main: cz.artin.hackers.HackersPlugin
 
-  commands:
-    zombie: Spawn a zombie
-      description:
-    chicken:
-      description: Get you a perfect meal
-    MagicWand:
-      description: Get you a magic wand
+commands:
+  zombie:
+    description: Spawn a zombie
+  chicken:
+    description: Get you a perfect meal
+  MagicWand:
+    description: Get you a magic wand

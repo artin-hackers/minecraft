@@ -45,10 +45,16 @@ public class HackersPlugin extends JavaPlugin {
                 axe.setItemMeta(meta);
                 me.getInventory().addItem(axe);
                 return true;
+            }else if (label.equalsIgnoreCase("house")) {
+                if (sender instanceof Player) {
+                    Player player = (Player) sender;
+                    final Location playerLocation = player.getLocation();
+                    House house = new House(playerLocation);
+                    house.buildHouse();
+                    return true;
+                }
             }
         }
-
-
         return false;
     }
 
@@ -56,9 +62,7 @@ public class HackersPlugin extends JavaPlugin {
     void spawnZombie(Player player) {
         final Location playerLocation = player.getLocation();
         final Location zombieLocation = new Location(player.getWorld(),
-                playerLocation.getX() + 5,
-                playerLocation.getY(),
-                playerLocation.getZ());
+                playerLocation.getX() + 5, playerLocation.getY(), playerLocation.getZ());
         Zombie zombie = player.getWorld().spawn(zombieLocation, Zombie.class);
         player.sendMessage("Zombie near you!");
         LOG.info("Zombie spawned");
