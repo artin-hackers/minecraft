@@ -1,10 +1,10 @@
 package cz.artin.hackers;
 
 
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.block.Block;
-import org.bukkit.block.Sign;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Chicken;
@@ -14,19 +14,27 @@ import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scoreboard.DisplaySlot;
+import org.bukkit.scoreboard.Objective;
+import org.bukkit.scoreboard.Scoreboard;
 
+import java.util.ArrayList;
 import java.util.logging.Logger;
 
 
-public class HackersPlugin extends JavaPlugin {
+public class HackersPlugin extends JavaPlugin implements org.bukkit.event.Listener {
     public static final Logger LOG = Logger.getLogger(HackersPlugin.class.getName());
 
     @Override
     public void onEnable() {
         getLogger().info("Loading Hackers plugin... xvojta");
+        PluginManager manager = getServer().getPluginManager();
+        manager.registerEvents(this, this);
     }
 
     @Override
@@ -83,21 +91,44 @@ public class HackersPlugin extends JavaPlugin {
     private void giveGunToPlayer(Player pl) {
         ItemStack gun = new ItemStack(Material.BLAZE_ROD);
         ItemMeta gunMeta = gun.getItemMeta();
+        ArrayList<String> lore = new ArrayList<String>();
+        lore.add("Fireball gun");
         gunMeta.setDisplayName("Gun");
+        gunMeta.setLore(lore);
         gun.setItemMeta(gunMeta);
         pl.getInventory().addItem(gun);
     }
 
     @EventHandler
     public void onPlayerInteract (PlayerInteractEvent event) {
-        LOG.info("Fireball");
         if(event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK) {
+
             Player player = event.getPlayer();
-            ItemMeta itemMeta = player.getItemOnCursor().getItemMeta();
-            if(itemMeta.getDisplayName().equalsIgnoreCase("gun")) {
+            ItemMeta itemMeta = player.getInventory().getItemInMainHand().getItemMeta() ;
+            LOG.info(player.getHealth() + "");
+            if(itemMeta.getDisplayName().equalsIgnoreCase("gun") && itemMeta.getLore().get(0).equals("Fireball gun")) {
+                LOG.info("Fireball 5");
                 Location loc = player.getEyeLocation().toVector().add(player.getLocation().getDirection().multiply(2)).toLocation(player.getWorld(), player.getLocation().getYaw(), player.getLocation().getPitch());
                 Fireball fireball = player.getWorld().spawn(loc, Fireball.class);
             }
+        }
+    }
+
+    @EventHandler
+    public void scoreboard(PlayerJoinEvent e) {
+        Scoreboard sb = Bukkit.getScoreboardManager().getMainScoreboard();
+
+        Objective objective = sb.getObjective("showhealth");
+        if(sb.getObjective("showhealth") == null) {
+            objective = sb.registerNewObjective("showhealth", "health");
+        }
+
+        objective.setDisplaySlot(DisplaySlot.BELOW_NAME);
+        objective.setDisplayName(ChatColor.RED + "\u2764");
+
+        for (Player online : Bukkit.getOnlinePlayers()) {
+            online.setScoreboard(sb);
+            online.setHealth(online.getHealth());
         }
     }
 
