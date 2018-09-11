@@ -1,4 +1,7 @@
 name: hackers-plugin
 version: "1.0-SNAPSHOT"
-author: Artin Hacker
+author: Filip Bartl
 main: cz.artin.hackers.HackersPlugin
+commands:
+  kure:
+    description: vytvor kure
