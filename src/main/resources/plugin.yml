@@ -5,10 +5,12 @@ main: cz.artin.hackers.HackersPlugin
 
 commands:
   zombie:
-    description: Spawn a zombie
+    description: Spawn a zombie near wiev
   chicken:
-    description: Get you a perfect meal
+    description: Gets you a perfect meal
   firewand:
-    description: Get you a fire wand
-  icewand:
-    description: Get you a ice wand
+    description: Gets you a fire wand
+  snowwand:
+    description: Gets you a ice wand
+  house:
+    description: Build house

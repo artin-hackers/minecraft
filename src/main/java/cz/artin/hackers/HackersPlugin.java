@@ -74,19 +74,19 @@ public class HackersPlugin extends JavaPlugin {
     void spawnZombie(Player player) {
         final Location playerLocation = player.getLocation();
         final Location zombieLocation = new Location(player.getWorld(),
-                playerLocation.getX() + 5, playerLocation.getY(), playerLocation.getZ());
+                playerLocation.getX() + 1, playerLocation.getY(), playerLocation.getZ());
         Zombie zombie = player.getWorld().spawn(zombieLocation, Zombie.class);
-        player.sendMessage("Zombie near you!");
-        LOG.info("Zombie spawned");
+        player.sendMessage("Zombie is near you!");
+        LOG.info("Zombie has been spawned");
     }
     void spawnChicken (Player player) {
         final Location playerLocation = player.getLocation();
         final Location chickenLocation = new Location(player.getWorld(),
-                playerLocation.getX() + 5,
-                playerLocation.getY(),
-                playerLocation.getZ());
+                playerLocation.getX() + 1, playerLocation.getY(), playerLocation.getZ());
+        new int rotation = player.getLocation().getYaw();
+
         Chicken chicken = player.getWorld().spawn(chickenLocation, Chicken.class);
-        player.sendMessage("Chicken near you!");
-        LOG.info("Chicken spawned");
+        player.sendMessage("Chicken is near you!");
+        LOG.info("Chicken has been spawned");
     }
 }

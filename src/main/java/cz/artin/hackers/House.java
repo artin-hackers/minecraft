@@ -68,14 +68,7 @@ public class House {
         playerLocation.add(1,0,0);
         playerLocation.getBlock().setType(Material.ANVIL);
 
-        playerLocation.add(-2,0,0);
-        playerLocation.getBlock().setType(Material.CHEST);
 
-        playerLocation.add(0,0,-2);
-        playerLocation.getBlock().setType(Material.FURNACE);
-
-        playerLocation.add(1,0,0);
-        playerLocation.getBlock().setType(Material.ENCHANTING_TABLE);
 
         playerLocation.add(1,0,0);
         playerLocation.getBlock().setType(Material.JUKEBOX);
