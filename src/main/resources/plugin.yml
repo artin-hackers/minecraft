@@ -5,3 +5,7 @@ main: cz.artin.hackers.HackersPlugin
 commands:
   kure:
     description: vytvor kure
+  vlk:
+    description: Vytvor vlka
+  zed:
+    description: postavit zed

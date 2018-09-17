@@ -5,6 +5,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Chicken;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Wolf;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class HackersPlugin extends JavaPlugin {
@@ -16,6 +17,15 @@ public class HackersPlugin extends JavaPlugin {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if(label.equalsIgnoreCase("vlk")) {
+            if (sender instanceof Player) {
+                Player player = (Player) sender;
+                Location pozicevlka = player.getLocation().clone();
+                pozicevlka.add(5, 0, 0);
+                Wolf vlk = player.getWorld().spawn(pozicevlka, Wolf.class);
+
+            }
+        }
         if (label.equalsIgnoreCase("kure")){
             if(sender instanceof Player){
                 Player player= (Player)sender;
@@ -27,6 +37,16 @@ public class HackersPlugin extends JavaPlugin {
 
             return true;
         }
+        if(label.equalsIgnoreCase("zed")) {
+            if (sender instanceof Player) {
+                Player player = (Player) sender;
+                final Location pozice= player.getLocation();
+                final Location pozicezdi= new Location(player.getWorld(), pozice.getX(),pozice. getY(), pozice.getZ());
+
+
+            }
+        }
+
         return false;
     }
 }
