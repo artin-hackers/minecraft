@@ -9,3 +9,9 @@ commands:
     description: Vytvor vlka
   zed:
     description: postavit zed
+  strecha:
+    description: Vytvor strechu
+
+
+
+

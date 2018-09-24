@@ -1,6 +1,7 @@
 package cz.artin.hackers;
 
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Chicken;
@@ -40,12 +41,43 @@ public class HackersPlugin extends JavaPlugin {
         if(label.equalsIgnoreCase("zed")) {
             if (sender instanceof Player) {
                 Player player = (Player) sender;
-                final Location pozice= player.getLocation();
-                final Location pozicezdi= new Location(player.getWorld(), pozice.getX(),pozice. getY(), pozice.getZ());
-
-
+                Location pozice = player.getLocation().clone();
+                pozice.add(0, 4, 0);
+                pozice.getBlock().setType(Material.STONE);
             }
-        }
+                return true; }
+
+                if(label.equalsIgnoreCase("strecha")) {
+                    if (sender instanceof Player) {
+                        Player player = (Player) sender;
+                        Location pozice= player.getLocation().clone();
+                        pozice.add( 1 ,4 ,0);
+                        pozice.getBlock().setType(Material.STONE);
+                        pozice.add( 1,0,0);
+                        pozice.getBlock().setType(Material.STONE);
+                        pozice.add( 1 ,0 ,0);
+                        pozice.getBlock().setType(Material.STONE);
+                        pozice.add( 1 ,0 ,0);
+                        pozice.getBlock().setType(Material.STONE);
+                    pozice.add( 1 ,0 ,1);
+                    pozice.getBlock().setType(Material.STONE);
+                        pozice.add( 1 ,0 ,1);
+                        pozice.getBlock().setType(Material.STONE);
+                        pozice.add( 1 ,0 ,1);
+                        pozice.getBlock().setType(Material.STONE);
+                        pozice.add( 1 ,0 ,1);
+                        pozice.getBlock().setType(Material.STONE);
+
+
+                    }
+
+        return true;
+                }
+
+
+
+
+
 
         return false;
     }
