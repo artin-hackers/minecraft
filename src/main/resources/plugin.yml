@@ -4,13 +4,18 @@ author: Filip Bartl
 main: cz.artin.hackers.HackersPlugin
 commands:
   kure:
-    description: vytvor kure
+    description: vytvor vlka
   vlk:
-    description: Vytvor vlka
+    description: Vytvor kure
   zed:
     description: postavit zed
   strecha:
     description: Vytvor strechu
+
+
+
+
+
 
 
 

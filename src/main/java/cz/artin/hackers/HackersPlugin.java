@@ -18,7 +18,7 @@ public class HackersPlugin extends JavaPlugin {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(label.equalsIgnoreCase("vlk")) {
+        if (label.equalsIgnoreCase("vlk")) {
             if (sender instanceof Player) {
                 Player player = (Player) sender;
                 Location pozicevlka = player.getLocation().clone();
@@ -26,59 +26,71 @@ public class HackersPlugin extends JavaPlugin {
                 Wolf vlk = player.getWorld().spawn(pozicevlka, Wolf.class);
 
             }
-        }
-        if (label.equalsIgnoreCase("kure")){
-            if(sender instanceof Player){
-                Player player= (Player)sender;
-                Location kureLocation=player.getLocation().clone();
-                kureLocation.add(5,0,0);
-                Chicken kure=player.getWorld().spawn(kureLocation,Chicken.class);
-
-            }
-
             return true;
         }
-        if(label.equalsIgnoreCase("zed")) {
+
+        if (label.equalsIgnoreCase("kure")) {
+            if (sender instanceof Player) {
+                Player player = (Player) sender;
+                Location kureLocation = player.getLocation().clone();
+                kureLocation.add(5, 0, 0);
+                Chicken kure = player.getWorld().spawn(kureLocation, Chicken.class);
+
+            }
+            return true;
+        }
+
+        if (label.equalsIgnoreCase("zed")) {
             if (sender instanceof Player) {
                 Player player = (Player) sender;
                 Location pozice = player.getLocation().clone();
                 pozice.add(0, 4, 0);
                 pozice.getBlock().setType(Material.STONE);
             }
-                return true; }
+            return true;
+        }
 
-                if(label.equalsIgnoreCase("strecha")) {
-                    if (sender instanceof Player) {
-                        Player player = (Player) sender;
-                        Location pozice= player.getLocation().clone();
-                        pozice.add( 1 ,4 ,0);
-                        pozice.getBlock().setType(Material.STONE);
-                        pozice.add( 1,0,0);
-                        pozice.getBlock().setType(Material.STONE);
-                        pozice.add( 1 ,0 ,0);
-                        pozice.getBlock().setType(Material.STONE);
-                        pozice.add( 1 ,0 ,0);
-                        pozice.getBlock().setType(Material.STONE);
-                    pozice.add( 1 ,0 ,1);
-                    pozice.getBlock().setType(Material.STONE);
-                        pozice.add( 1 ,0 ,1);
-                        pozice.getBlock().setType(Material.STONE);
-                        pozice.add( 1 ,0 ,1);
-                        pozice.getBlock().setType(Material.STONE);
-                        pozice.add( 1 ,0 ,1);
-                        pozice.getBlock().setType(Material.STONE);
-
-
-                    }
-
-        return true;
-                }
-
-
-
-
-
+        if (label.equalsIgnoreCase("strecha")) {
+            if (sender instanceof Player) {
+                Player player = (Player) sender;
+                Location pozice = player.getLocation().clone();
+                pozice.add(1, 2, 2);
+                pozice.getBlock().setType(Material.STONE);
+                pozice.add(1, 2, 2);
+                pozice.getBlock().setType(Material.STONE);
+                pozice.add(1, 2, 3);
+                pozice.getBlock().setType(Material.STONE);
+                pozice.add(1, 2, 2);
+                pozice.getBlock().setType(Material.STONE);
+                pozice.add(1, 2, 2);
+                pozice.getBlock().setType(Material.STONE);
+                pozice.add(1, 2, 2);
+                pozice.getBlock().setType(Material.STONE);
+                pozice.add(1, 2, 2);
+                pozice.getBlock().setType(Material.STONE);
+                pozice.add(1, 2, 2);
+                pozice.getBlock().setType(Material.STONE);
+            }
+            return true;
+        }
 
         return false;
-    }
-}
+    }}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
