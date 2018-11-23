@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 
 public class HackersPlugin extends JavaPlugin {
     private static final Logger LOG = Logger.getLogger(HackersPlugin.class.getName());
+    private Location LAST_LOCATION;
 
     @Override
     public void onEnable() {
@@ -72,6 +73,18 @@ public class HackersPlugin extends JavaPlugin {
         } else if (label.equalsIgnoreCase("spawnChickens")) {
             Spawns spawns = new Spawns();
             return spawns.spawnChickens(sender);
+        } else if (label.equalsIgnoreCase("teleportTo")) {
+            if (sender instanceof Player) {
+                Player player = (Player) sender;
+                LAST_LOCATION = player.getLocation().clone();
+                Location target_location = new Location(player.getWorld(), 100, 100, 100);
+                player.teleport(target_location);
+            }
+        } else if (label.equalsIgnoreCase("teleportBack")) {
+            if (sender instanceof Player) {
+                Player player = (Player) sender;
+                player.teleport(LAST_LOCATION);
+            }
         }
         return false;
     }

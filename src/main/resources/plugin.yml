@@ -25,3 +25,7 @@ commands:
     description: Spawns a group of chickens
   spawnZombie:
     description: Spawns a zombie
+  teleportTo:
+    description: Teleports the player to pre-set location
+  teleportBack:
+    description: Teleports the player to last location
