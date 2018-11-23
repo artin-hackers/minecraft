@@ -11,8 +11,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import java.util.logging.Logger;
 
-import cz.artin.hackers.Spawns;
-
 public class HackersPlugin extends JavaPlugin {
     private static final Logger LOG = Logger.getLogger(HackersPlugin.class.getName());
 
