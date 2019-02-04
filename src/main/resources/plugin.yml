@@ -4,19 +4,42 @@ author: Filip Bartl
 main: cz.artin.hackers.HackersPlugin
 commands:
   kure:
-    description: vytvor vlka
+    description: vytvor kure
   vlk:
-    description: Vytvor kure
-  zed:
-    description: postavit zed
+    description: Vytvor vlka
+  kralik:
+    description: vytvor kralika
+  zombie:
+    description: vytvor zombika
+  most:
+    description: postavit most
   strecha:
     description: Vytvor strechu
-
-
-
-
-
-
-
-
-
+  zed2:
+    description: vytvor zed2
+  zed:
+    description: vytvor zed
+  cistic:
+    description: udelej cisto
+  strecha1:
+    description: vytvor strechu
+  dum:
+    description: vytvor dum
+  bazen:
+    description: udelej podlahu
+  rybnik:
+    description: udelej rybnik
+  most2:
+    description: udelej most2
+  ohrada:
+    description: vytvor ohradu
+  magickasekera:
+    description: vytvor magickousekeru
+  magickykrumpac:
+    description: vytvor magickykrumpac
+  magickymec:
+    description: vytvor magickymec
+  magickysip:
+    description: vytvor magickysip
+  magickydiamantovymec:
+    description: vytvor magickydiamantovymec
