@@ -85,7 +85,18 @@ public class HackersPlugin extends JavaPlugin {
                 Player player = (Player) sender;
                 player.teleport(LAST_LOCATION);
             }
+        } else if (label.equalsIgnoreCase("becomeGhostRider")) {
+            if (sender instanceof Player) {
+                Player player = (Player) sender;
+                ItemStack fishingRod = new ItemStack(Material.FISHING_ROD, 1);
+                ItemMeta meta = fishingRod.getItemMeta();
+                meta.setDisplayName("Ghost Rider's fishing rod");
+                fishingRod.setItemMeta(meta);
+                player.getInventory().addItem(fishingRod);
+                return true;
+            }
         }
+
         return false;
     }
 

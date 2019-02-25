@@ -3,6 +3,8 @@ version: "1.0-SNAPSHOT"
 author: Zdenek Nemec
 main: cz.artin.hackers.HackersPlugin
 commands:
+  becomeGhostRider:
+    description: Equips the player with Ghost Rider's fishing rod
   createHouse:
     description: Creates a house
   createPlain:

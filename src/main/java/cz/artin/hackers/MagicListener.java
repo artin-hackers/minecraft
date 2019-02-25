@@ -22,22 +22,12 @@ public class MagicListener implements Listener {
             positionFrom.add(0, -1, 0);
             positionFrom.getBlock().setType(Material.DIRT);
         }
-    }
-
-    @EventHandler
-    public void onInteract(PlayerInteractEvent event) {
-        if (event.getAction().equals(Action.LEFT_CLICK_AIR)) {
-            ItemStack itemInMainHand = event.getPlayer().getInventory().getItemInMainHand();
-            if (itemInMainHand != null && itemInMainHand.getItemMeta() != null) {
-                if (itemInMainHand.getItemMeta().getDisplayName().equals("Axe of Fire")) {
-                    event.getPlayer().launchProjectile(Fireball.class);
-                }
-                else if (itemInMainHand.getItemMeta().getDisplayName().equals("Pickaxe of Dead")) {
-                    Player player = event.getPlayer();
-                    Spawns spawns = new Spawns();
-                    spawns.spawnZombie(player);
-                }
-            }
+        else if (itemInMainHand != null
+                && itemInMainHand.getItemMeta() != null
+                && itemInMainHand.getItemMeta().getDisplayName().equals("Ghost Rider's fishing rod"))
+        {
+            Location positionFrom = event.getFrom();
+            positionFrom.getBlock().setType(Material.FIRE);
         }
     }
 }
