@@ -334,7 +334,7 @@ public class HackersPlugin extends JavaPlugin {
                 Player me = (Player) sender;
                 ItemStack axe = new ItemStack(Material.DIAMOND_SHOVEL, 1);
                 ItemMeta meta = axe.getItemMeta();
-                meta.setDisplayName("magickalopata");
+                meta.setDisplayName("magickalopata"); // hhh
                 axe.setItemMeta(meta);
                 me.getInventory().addItem(axe);
                 return true;
