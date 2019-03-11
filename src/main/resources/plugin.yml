@@ -2,3 +2,59 @@ name: hackers-plugin
 version: "1.0-SNAPSHOT"
 author: Artin Hacker
 main: cz.artin.hackers.HackersPlugin
+
+commands:
+  build_b:
+    description: Build block
+  build_c:
+    description: Build block
+  build_d:
+    description: Build block
+  stena:
+    description: Postavi stenu
+  dum:
+    description: Postavi dum
+  powertycka:
+    description: Da ti tu nejlepsi tycku ever!
+  kure:
+    description: spawne kure
+  vlcek:
+    description: spawne vlcka
+  zed:
+    description: postavi zed
+  udelejbazen:
+    description: postavi bazen
+  sign:
+    description: cedulka
+  chcibytartinhacker:
+    description: da ti to hackerskou tycku
+  launchpad:
+    description: launch
+  nick:
+    description: da ti to nick
+  warp:
+      aliases: [port]
+      description: Warpne te to do HealShopu
+  promote:
+    description: promote proste
+  demote:
+    description: demote proste
+  perms:
+    description: zobrazi permise
+  maxperms:
+    description: nejvyssi permise
+
+  bbcreate:
+    description: udela bossbar
+  bbtoggle:
+    description: vypne nebo zapne meneni bossbaru :)
+  head:
+    description: head
+  kit:
+    description: KIT PROSTE :/
+  gm:
+    description: otevre inventar s moznostmi zmeny gamemodu B)
+  tictactoe:
+    description: otevre inventar ve kterem lze hrat piskvorky
+  adminmenu:
+    description: otevre inventar s admin vecmi

@@ -1,0 +1,19 @@
+name: hackers-plugin
+version: "1.0-SNAPSHOT"
+author: Artin Hacker
+main: cz.artin.hackers.HackersPlugin
+
+commands:
+ build_a:
+    description: Build block
+ build_b:
+    description: Build block
+ build_c:
+    description: Build block
+ build_d:
+    description: Build block
+ stena:
+    description: Postavi stenu
+ dum:
+    description: Postavi dum
+
