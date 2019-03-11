@@ -65,11 +65,18 @@ public class HackersPlugin extends JavaPlugin {
             }
             return true;
         }
+        if (label.equalsIgnoreCase("spider")) {
+            if (sender instanceof Player) {
+                Player player = (Player) sender;
+                Location pavoukLocation = player.getLocation().clone();
+                pavoukLocation.add(5, 0, 0);
+                Spider pavouk = player.getWorld().spawn(pavoukLocation, Spider.class);
 
-    
+            }
+            return true;
+        }
 
-
-        if (label.equalsIgnoreCase("most")) {
+            if (label.equalsIgnoreCase("most")) {
             if (sender instanceof Player) {
                 Player player = (Player) sender;
                 Location pozice = player.getLocation().clone();
@@ -238,22 +245,34 @@ public class HackersPlugin extends JavaPlugin {
             }
             return true;
         }
-        if (label.equalsIgnoreCase("most2")) { //kontroluje ze prikaz je most
-            vytvorMiMost(sender);
-            return true;
+        if (label.equalsIgnoreCase("supermec")) {
+            if (sender instanceof Player) {
+                Player me = (Player) sender;
+                ItemStack sword = new ItemStack(Material.GOLDEN_SWORD, 1);
+                ItemMeta meta = sword.getItemMeta();
+                meta.setDisplayName("supermec");
+                sword.setItemMeta(meta);
+                me.getInventory().addItem(sword);
+                return true;
+            }
         }
-         if (label.equalsIgnoreCase("magickasekera")) {
-             if (sender instanceof Player) {
-                 Player me = (Player) sender;
-                 ItemStack axe = new ItemStack(Material.DIAMOND_AXE, 1);
-                 ItemMeta meta = axe.getItemMeta();
-                 meta.setDisplayName("filipovasekera");
-                 axe.setItemMeta(meta);
-                 me.getInventory().addItem(axe);
-                 return true;
-             }
-         }
-        if (label.equalsIgnoreCase("magickykrumpac")) {
+        if (label.equalsIgnoreCase("teleport")) {
+            if (sender instanceof Player) {
+                Player hrac = (Player) sender;
+                final Location mesto = new Location(hrac.getWorld(), 374, 78, -108);
+                hrac.teleport(mesto);
+            }
+        }
+        if (label.equalsIgnoreCase("teleport2")) {
+            if (sender instanceof Player) {
+                Player hrac = (Player) sender;
+                final Location mesto = new Location(hrac.getWorld(),176,70, -245);
+                hrac.teleport(mesto);
+            }
+        }
+
+
+         if (label.equalsIgnoreCase("magickykrumpac")) {
             if (sender instanceof Player) {
                 Player me = (Player) sender;
                 ItemStack axe = new ItemStack(Material.DIAMOND_PICKAXE, 1);
@@ -275,6 +294,19 @@ public class HackersPlugin extends JavaPlugin {
                 return true;
             }
         }
+
+        if (label.equalsIgnoreCase("zlatykrumpac")) {
+            if (sender instanceof Player) {
+                Player me = (Player) sender;
+                ItemStack axe = new ItemStack(Material.GOLDEN_PICKAXE, 1);
+                ItemMeta meta = axe.getItemMeta();
+                meta.setDisplayName("zlatykrumpac");
+                axe.setItemMeta(meta);
+                me.getInventory().addItem(axe);
+                return true;
+            }
+        }
+
         if (label.equalsIgnoreCase("magickysip")) {
             if (sender instanceof Player) {
                 Player me = (Player) sender;
@@ -297,6 +329,29 @@ public class HackersPlugin extends JavaPlugin {
                 return true;
             }
         }
+        if (label.equalsIgnoreCase("magickalopata")) {
+            if (sender instanceof Player) {
+                Player me = (Player) sender;
+                ItemStack axe = new ItemStack(Material.DIAMOND_SHOVEL, 1);
+                ItemMeta meta = axe.getItemMeta();
+                meta.setDisplayName("magickalopata");
+                axe.setItemMeta(meta);
+                me.getInventory().addItem(axe);
+                return true;
+            }
+        }
+        if (label.equalsIgnoreCase("nicicilopata")) {
+            if (sender instanceof Player) {
+                Player me = (Player) sender;
+                ItemStack axe = new ItemStack(Material.GOLDEN_SHOVEL, 1);
+                ItemMeta meta = axe.getItemMeta();
+                meta.setDisplayName("nicicilopata");
+                axe.setItemMeta(meta);
+                me.getInventory().addItem(axe);
+                return true;
+            }
+        }
+
         return false;
     }
 

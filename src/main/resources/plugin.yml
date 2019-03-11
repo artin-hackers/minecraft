@@ -11,6 +11,8 @@ commands:
     description: vytvor kralika
   zombie:
     description: vytvor zombika
+  spider:
+    description: vytvor pavouka
   most:
     description: postavit most
   strecha:
@@ -43,3 +45,16 @@ commands:
     description: vytvor magickysip
   magickydiamantovymec:
     description: vytvor magickydiamantovymec
+  magickalopata:
+    description: vytvor magickoulopatu
+  nicicilopata:
+    description: vytvor nicicilopatu
+  supermec:
+    description: vytvor supermec
+  zlatykrumpac:
+    description: vytvor zlatykrumpac
+  teleport2:
+    description: teleportuj hrace do mesta
+  teleport:
+    description: teleportuje hrace do mesta
+
