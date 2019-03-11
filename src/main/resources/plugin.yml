@@ -57,4 +57,6 @@ commands:
     description: teleportuj hrace do mesta
   teleport:
     description: teleportuje hrace do mesta
+  teleportovatnazacatek:
+    description: teleportuj na zacatek
 

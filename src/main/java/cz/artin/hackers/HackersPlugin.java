@@ -15,6 +15,7 @@ package cz.artin.hackers;
 public class HackersPlugin extends JavaPlugin {
 
     private List<Object> pozice;
+    private Location teleportertamkdezacinamnazacatku;
 
     @Override
     public void onEnable() {
@@ -260,7 +261,14 @@ public class HackersPlugin extends JavaPlugin {
             if (sender instanceof Player) {
                 Player hrac = (Player) sender;
                 final Location mesto = new Location(hrac.getWorld(), 374, 78, -108);
+                teleportertamkdezacinamnazacatku=hrac.getLocation();
                 hrac.teleport(mesto);
+            }
+        }
+        if (label.equalsIgnoreCase("tleportovatnazacatek")) {
+            if (sender instanceof Player) {
+                Player hrac = (Player) sender;
+                hrac.teleport(teleportertamkdezacinamnazacatku);
             }
         }
         if (label.equalsIgnoreCase("teleport2")) {
@@ -270,7 +278,6 @@ public class HackersPlugin extends JavaPlugin {
                 hrac.teleport(mesto);
             }
         }
-
 
          if (label.equalsIgnoreCase("magickykrumpac")) {
             if (sender instanceof Player) {
