@@ -1,16 +1,18 @@
 package cz.artin.hackers;
 
-        import org.bukkit.Location;
-        import org.bukkit.Material;
-        import org.bukkit.command.Command;
-        import org.bukkit.command.CommandSender;
-        import org.bukkit.entity.*;
-        import org.bukkit.entity.Zombie;
-        import org.bukkit.inventory.ItemStack;
-        import org.bukkit.inventory.meta.ItemMeta;
-        import org.bukkit.plugin.java.JavaPlugin;
 
-        import java.util.List;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.*;
+import org.bukkit.entity.Zombie;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.List;
+
 
 public class HackersPlugin extends JavaPlugin {
 
@@ -26,26 +28,24 @@ public class HackersPlugin extends JavaPlugin {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (label.equalsIgnoreCase("vlk")) {
-            if (sender instanceof Player) {
-                Player player = (Player) sender;
-                Location pozicevlka = player.getLocation().clone();
-                pozicevlka.add(5, 0, 0);
-                Wolf vlk = player.getWorld().spawn(pozicevlka, Wolf.class);
-
-            }
-            return true;
+            return spawnWolf(sender);
         }
+        else if (label.equalsIgnoreCase("kure")) {
+            return spawnChicken(sender);
+        }
+        else if (label.equalsIgnoreCase("portal")) {
+            return createTownPortal(sender);
+        }
+        else {
+            Player player = (Player) sender;
+            player.sendMessage("Unknown command!");
+        }
+
+
+        /*
 
         if (label.equalsIgnoreCase("kure")) {
-            if (sender instanceof Player) {
-                Player player = (Player) sender;
-                Location kureLocation = player.getLocation().clone();
-                kureLocation.add(5, 0, 0);
-                Chicken kure = player.getWorld().spawn(kureLocation, Chicken.class);
 
-            }
-            return true;
-        }
         if (label.equalsIgnoreCase("kralik")) {
             if (sender instanceof Player) {
                 Player player = (Player) sender;
@@ -359,9 +359,41 @@ public class HackersPlugin extends JavaPlugin {
                 return true;
             }
         }
-
+     */
         return false;
     }
+
+    private boolean spawnWolf(CommandSender sender) {
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
+            Location pozicevlka = player.getLocation().clone();
+            pozicevlka.add(5, 0, 0);
+            Wolf vlk = player.getWorld().spawn(pozicevlka, Wolf.class);
+        }
+        return true;
+    }
+
+    private boolean spawnChicken(CommandSender sender) {
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
+            Location kureLocation = player.getLocation().clone();
+            kureLocation.add(5, 0, 0);
+            Chicken kure = player.getWorld().spawn(kureLocation, Chicken.class);
+        }
+        return true;
+    }
+
+    private boolean createTownPortal(CommandSender sender) {
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
+            Location portalLocation = player.getLocation().clone();
+            portalLocation.add(5, 0, 0);
+            portalLocation.getBlock().setType(Material.EMERALD_BLOCK);
+        }
+        return true;
+    }
+
+
 
     //PROMENY:
 

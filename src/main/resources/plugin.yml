@@ -59,4 +59,6 @@ commands:
     description: teleportuje hrace do mesta
   teleportovatnazacatek:
     description: teleportuj na zacatek
+  portal:
+    description: vytvor portal
 
