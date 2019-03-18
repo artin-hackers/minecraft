@@ -261,14 +261,15 @@ public class HackersPlugin extends JavaPlugin {
             if (sender instanceof Player) {
                 Player hrac = (Player) sender;
                 final Location mesto = new Location(hrac.getWorld(), 374, 78, -108);
-                teleportertamkdezacinamnazacatku=hrac.getLocation();
+                hrac.getLocation();
                 hrac.teleport(mesto);
             }
         }
-        if (label.equalsIgnoreCase("tleportovatnazacatek")) {
+        if (label.equalsIgnoreCase("teleportovatnazacatek")) {
             if (sender instanceof Player) {
                 Player hrac = (Player) sender;
-                hrac.teleport(teleportertamkdezacinamnazacatku);
+                final Location zacatek = new Location(hrac.getWorld(),29,64,2);
+                hrac.teleport(zacatek);
             }
         }
         if (label.equalsIgnoreCase("teleport2")) {
