@@ -29,33 +29,27 @@ public class HackersPlugin extends JavaPlugin {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (label.equalsIgnoreCase("vlk")) {
             return spawnWolf(sender);
-        }
-        else if (label.equalsIgnoreCase("kure")) {
+
+        } else if (label.equalsIgnoreCase("kure")) {
             return spawnChicken(sender);
-        }
-        else if (label.equalsIgnoreCase("portal")) {
+
+        } else if (label.equalsIgnoreCase("portal")) {
             return createTownPortal(sender);
-        }
-        else {
+
+        } else if (label.equalsIgnoreCase("kralik")) {
+        return spawnRabbit(sender);
+
+        else{
             Player player = (Player) sender;
             player.sendMessage("Unknown command!");
         }
-
 
         /*
 
         if (label.equalsIgnoreCase("kure")) {
 
         if (label.equalsIgnoreCase("kralik")) {
-            if (sender instanceof Player) {
-                Player player = (Player) sender;
-                Location kralikLocation = player.getLocation().clone();
-                kralikLocation.add(5, 0, 0);
-                Rabbit kralik = player.getWorld().spawn(kralikLocation, Rabbit.class);
 
-            }
-            return true;
-        }
         if (label.equalsIgnoreCase("zombie")) {
             if (sender instanceof Player) {
                 Player player = (Player) sender;
@@ -383,17 +377,30 @@ public class HackersPlugin extends JavaPlugin {
         return true;
     }
 
-    private boolean createTownPortal(CommandSender sender) {
+    private boolean spawnRabbit(CommandSender sender) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
-            Location portalLocation = player.getLocation().clone();
-            portalLocation.add(5, 0, 0);
-            portalLocation.getBlock().setType(Material.EMERALD_BLOCK);
+            Location kralikLocation = player.getLocation().clone();
+            kralikLocation.add(5, 0, 0);
+            Rabbit kralik = player.getWorld().spawn(kralikLocation, Rabbit.class);
+
         }
         return true;
+
+
+        private boolean createTownPortal;  (CommandSender sender) {
+            if (sender instanceof Player) {
+                Player player = (Player) sender;
+                Location portalLocation = player.getLocation().clone();
+                portalLocation.add(5, 0, 0);
+                portalLocation.getBlock().setType(Material.EMERALD_BLOCK);
+            }
+            return true;
+        }
     }
+}
 
-
+      /*
 
     //PROMENY:
 
