@@ -1,7 +1,6 @@
 package cz.artin.hackers;
 
-import org.bukkit.Location;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -9,6 +8,21 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.entity.*;
+
+
+
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.*;
+import org.bukkit.entity.Zombie;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.List;
 
 public class MagicListener implements Listener {
     @EventHandler
@@ -75,20 +89,29 @@ public class MagicListener implements Listener {
                 }
             }
         }
-    }
+        if (event.getAction().equals(Action.LEFT_CLICK_BLOCK)) {
+            if (event.getClickedBlock().getType().equals(Material.EMERALD_BLOCK)) {
+                Bukkit.getServer().getLogger().info("hrac kliknul levim tlacitkem ...");
+                final Location mesto = new Location(event.getPlayer().getWorld(), 374, 78, -108);
+                event.getPlayer().teleport(mesto);
 
-    @EventHandler
-    public void onPlayerMove(PlayerMoveEvent event) {
-        ItemStack itemInMainHand = event.getPlayer().getInventory().getItemInMainHand();
-        if (itemInMainHand != null && itemInMainHand.getItemMeta() != null) {
-            if (itemInMainHand.getItemMeta().getDisplayName().equals("supermec")) {
-             Location positionFrom = event.getFrom();
-                positionFrom.getBlock().setType(Material.FIRE);
             }
-
         }
     }
-}
+
+        @EventHandler
+        public void onPlayerMove (PlayerMoveEvent event){
+            ItemStack itemInMainHand = event.getPlayer().getInventory().getItemInMainHand();
+            if (itemInMainHand != null && itemInMainHand.getItemMeta() != null) {
+                if (itemInMainHand.getItemMeta().getDisplayName().equals("supermec")) {
+                    Location positionFrom = event.getFrom();
+                    positionFrom.getBlock().setType(Material.FIRE);
+                }
+
+            }
+        }
+    }
+
 
 
 

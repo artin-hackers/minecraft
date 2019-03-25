@@ -39,6 +39,7 @@ public class HackersPlugin extends JavaPlugin {
         else if (label.equalsIgnoreCase("kralik")) {
             return spawnRabbit(sender);
         }
+
         else {
             Player player = (Player) sender;
             player.sendMessage("Unknown command!");
