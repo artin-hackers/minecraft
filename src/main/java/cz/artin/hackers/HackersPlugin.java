@@ -29,18 +29,35 @@ public class HackersPlugin extends JavaPlugin {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (label.equalsIgnoreCase("vlk")) {
             return spawnWolf(sender);
-        }
-        else if (label.equalsIgnoreCase("kure")) {
+        } else if (label.equalsIgnoreCase("kure")) {
             return spawnChicken(sender);
-        }
-        else if (label.equalsIgnoreCase("portal")) {
+        } else if (label.equalsIgnoreCase("portal")) {
             return createTownPortal(sender);
-        }
-        else if (label.equalsIgnoreCase("kralik")) {
+        } else if (label.equalsIgnoreCase("kralik")) {
             return spawnRabbit(sender);
-        }
+        } else if (label.equalsIgnoreCase("zombie")) {
+            return spawnZombie(sender);
+        } else if (label.equalsIgnoreCase("spider")) {
+            return spawnSpider(sender);
+        } else if (label.equalsIgnoreCase("most")) {
+            return createBridge(sender);
+        } else if (label.equalsIgnoreCase("zed")) {
+            return createWall(sender);
+        } else if (label.equalsIgnoreCase("zed2")) {
+            return createWall2(sender);
+        } else if (label.equalsIgnoreCase("cistic")) {
+            return createcleaner(sender);
+        } else if (label.equalsIgnoreCase("strecha1")) {
+            return createRoof1(sender);
+        } else if (label.equalsIgnoreCase("dum")) {
+            return createHouse(sender);
+        } else if (label.equalsIgnoreCase("strecha")) {
+            return createRoof(sender);
+        } else if (label.equalsIgnoreCase("bazen")) {
+            return createPool(sender);
 
-        else {
+
+        } else {
             Player player = (Player) sender;
             player.sendMessage("Unknown command!");
         }
@@ -52,176 +69,32 @@ public class HackersPlugin extends JavaPlugin {
         if (label.equalsIgnoreCase("kralik")) {
 
         if (label.equalsIgnoreCase("zombie")) {
-            if (sender instanceof Player) {
-                Player player = (Player) sender;
-                Location zombikLocation = player.getLocation().clone();
-                zombikLocation.add(5, 0, 0);
-                Zombie zombik = player.getWorld().spawn(zombikLocation, Zombie.class);
 
-            }
             return true;
         }
         if (label.equalsIgnoreCase("spider")) {
-            if (sender instanceof Player) {
-                Player player = (Player) sender;
-                Location pavoukLocation = player.getLocation().clone();
-                pavoukLocation.add(5, 0, 0);
-                Spider pavouk = player.getWorld().spawn(pavoukLocation, Spider.class);
 
-            }
-            return true;
-        }
 
             if (label.equalsIgnoreCase("most")) {
-            if (sender instanceof Player) {
-                Player player = (Player) sender;
-                Location pozice = player.getLocation().clone();
-                pozice.add(0, 0, 5);
-                pozice.getBlock().setType(Material.STONE);
-                for (int i = 0; i < 10; i++) {
-                    pozice.add(1, 0, 0);
-                    pozice.getBlock().setType(Material.STONE);
-                }
-            }
-            return true;
-        }
 
-        if (label.equalsIgnoreCase("zed")) { //kontroluje ze prikaz je zed
-            if (sender instanceof Player) {               //kontroluje jestli to poslal hrac
-                Player player = (Player) sender;          //vytvor promenu player a dej si do ni odesilatele sender
-                Location pozice = player.getLocation().clone(); //urcuje pozici hrace (promena)
-                pozice.add(0, 0, 5);                  //pricte 0 0 5
-                for (int j = 0; j < 3; j++) {
-                    for (int i = 0; i < 10; i++) {
-                        pozice.add(1, 0, 0);         //pricte 0 0 1
-                        pozice.getBlock().setType(Material.STONE); //na tu pozici polozi diamand
-                    }
-                    pozice.add(-10, 1, 0);
-                }
-            }
-            return true;
-        }
+        if (label.equalsIgnoreCase("zed")) {
 
-        if (label.equalsIgnoreCase("zed2")) { //kontroluje ze prikaz je zed2
-            if (sender instanceof Player) {                //kontroluje jestli to poslal hrac
-                Player player = (Player) sender;           //vytvor promenu player a dej si do ni odesilatele sender
-                Location pozice = player.getLocation().clone(); //určuje pozici hrace (promena)
-                pozice.add(0, 0, 5);                  //pricte 0 0 5
-                for (int j = 0; j < 3; j++) {
-                    for (int i = 0; i < 10; i++) {
-                        pozice.add(0, 0, 1);         //pricte 0 0 1
-                        pozice.getBlock().setType(Material.STONE); //na tu pozici polozi kamen
 
-                    }
-                    pozice.add(0, 1, -10);
-                }
-            }
-            return true;
-        }
+        if (label.equalsIgnoreCase("zed2")) {
+
         if (label.equalsIgnoreCase("cistic")) {
-            if (sender instanceof Player) {
-                Player player = (Player) sender;
-                final Location playerLocation = player.getLocation();
-                for (int x = -10; x <= 10; x++) {
-                    for (int y = 0; y <= 10; y++) {
-                        for (int z = -10; z <= 10; z++) {
-                            final Location blockLocation = new Location(player.getWorld(),
-                                    playerLocation.getX() + x,
-                                    playerLocation.getY() + y,
-                                    playerLocation.getZ() + z);
-                            blockLocation.getBlock().setType(Material.AIR);
-                        }
-                    }
-                }
-            }
-            return true;
-        }
+
         if (label.equalsIgnoreCase("strecha1")) { // kontroluje ze prikaz je strecha
-            if (sender instanceof Player) {                  // kontroluje jestli to poslal hrac
-                Player player = (Player) sender;             // vytvor promenu player a dej si do ni odesilatele sender
-                Location pozice = player.getLocation().clone(); //urcuje pozici hrace(promena)
-                pozice.add(0, 5, 0);                  //pricte 0 5 0
-                for (int j = 0; j < 3; j++) {
-                    for (int i = 0; i < 10; i++) {
-                        pozice.add(1, 0, 0);         //pricte 1 0 0
-                        pozice.getBlock().setType(Material.STONE); //na tu pozici polozi kamen
-                    }
-                    pozice.add(-10, 0, 1);
-                }
+
+        if (label.equalsIgnoreCase("dum")) {
 
 
-            }
-        }
-        if (label.equalsIgnoreCase("dum")) { // kontroluje ze prikaz je strecha
-            if (sender instanceof Player) {                  // kontroluje jestli to poslal hrac
-                Player player = (Player) sender;             // vytvor promenu player a dej si do ni odesilatele sender
-                Location pozice = player.getLocation().clone(); //urcuje pozici hrace(promena)
-                pozice.add(0, 5, 0);                  //pricte 0 5 0
-                for (int j = 0; j < 6; j++) {
-                    for (int i = 0; i < 10; i++) {
-                        pozice.add(1, 0, 0);         //pricte 1 0 0
-                        pozice.getBlock().setType(Material.BLACK_CONCRETE); //na tu pozici polozi kamen
-                    }
-                    pozice.add(-10, 0, 1);
-                }
-
-
-            }
-        }
-        if (label.equalsIgnoreCase("dum")) { //kontroluje ze prikaz je zed
-            if (sender instanceof Player) {               //kontroluje jestli to poslal hrac
-                Player player = (Player) sender;          //vytvor promenu player a dej si do ni odesilatele sender
-                Location pozice = player.getLocation().clone(); //urcuje pozici hrace (promena)
-                pozice.add(0, 0, 5);                  //pricte 0 0 5
-                for (int j = 0; j < 5; j++) {
-                    for (int i = 0; i < 10; i++) {
-                        pozice.add(1, 0, 0);         //pricte 0 0 1
-                        pozice.getBlock().setType(Material.BRICKS); //na tu pozici polozi diamand
-                    }
-                    pozice.add(-10, 1, 0);
-                }
-                Location poziceProBazen = pozice.clone();
-                poziceProBazen.add(0, -5, -1);
-                vytvorMiBazen(poziceProBazen.clone());
-                vytvorMiBazen(poziceProBazen.clone().add(0, 0, -1));
-                vytvorMiBazen(poziceProBazen.clone().add(0, 0, -1));
-                vytvorMiBazen(poziceProBazen.clone().add(0, 0, -1));
-
-            }
-
-        }
 
 
         if (label.equalsIgnoreCase("strecha")) {
-            if (sender instanceof Player) {
-                Player player = (Player) sender;
-                Location pozice = player.getLocation().clone();
-                pozice.add(0, 0, 5);
-                pozice.getBlock().setType(Material.STONE);
-                pozice.add(1, 0, 0);
-                pozice.getBlock().setType(Material.STONE);
-                pozice.add(1, 0, 0);
-                pozice.getBlock().setType(Material.STONE);
-                pozice.add(1, 0, 0);
-                pozice.getBlock().setType(Material.STONE);
-                pozice.add(1, 0, 0);
-                pozice.getBlock().setType(Material.STONE);
-                pozice.add(1, 0, 0);
-                pozice.getBlock().setType(Material.STONE);
-                pozice.add(1, 0, 0);
-                pozice.getBlock().setType(Material.STONE);
-                pozice.add(1, 0, 0);
-                pozice.getBlock().setType(Material.STONE);
-            }
-            return true;
-        }
+
         if (label.equalsIgnoreCase("bazen")) {
-            if (sender instanceof Player) {
-                Player player = (Player) sender;
-                Location pozice = player.getLocation().clone();
-                vytvorMiBazen(pozice);
-            }
-        }
+
 
         if (label.equalsIgnoreCase("rybnik")) {
             vytvorMirybnik(sender);
@@ -389,6 +262,161 @@ public class HackersPlugin extends JavaPlugin {
         return true;
     }
 
+    private boolean spawnZombie(CommandSender sender) {
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
+            Location zombikLocation = player.getLocation().clone();
+            zombikLocation.add(5, 0, 0);
+            Zombie zombik = player.getWorld().spawn(zombikLocation, Zombie.class);
+
+        }
+        return true;
+    }
+
+
+    private boolean spawnSpider(CommandSender sender) {
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
+            Location pavoukLocation = player.getLocation().clone();
+            pavoukLocation.add(5, 0, 0);
+            Spider pavouk = player.getWorld().spawn(pavoukLocation, Spider.class);
+
+        }
+        return true;
+    }
+
+    private boolean createBridge(CommandSender sender) {
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
+            Location pozice = player.getLocation().clone();
+            pozice.add(0, 0, 5);
+            pozice.getBlock().setType(Material.STONE);
+            for (int i = 0; i < 10; i++) {
+                pozice.add(1, 0, 0);
+                pozice.getBlock().setType(Material.STONE);
+            }
+        }
+        return true;
+    }
+
+    private boolean createWall(CommandSender sender) {
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
+            Location pozice = player.getLocation().clone();
+            pozice.add(0, 0, 5);
+            for (int j = 0; j < 3; j++) {
+                for (int i = 0; i < 10; i++) {
+                    pozice.add(1, 0, 0);
+                    pozice.getBlock().setType(Material.STONE);
+                }
+                pozice.add(-10, 1, 0);
+            }
+        }
+        return true;
+    }
+
+    private boolean createWall2(CommandSender sender) {
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
+            Location pozice = player.getLocation().clone();
+            pozice.add(0, 0, 5);
+            for (int j = 0; j < 3; j++) {
+                for (int i = 0; i < 10; i++) {
+                    pozice.add(0, 0, 1);
+                    pozice.getBlock().setType(Material.STONE);
+
+                }
+                pozice.add(0, 1, -10);
+            }
+        }
+        return true;
+    }
+
+    private boolean createcleaner(CommandSender sender) {
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
+            final Location playerLocation = player.getLocation();
+            for (int x = -10; x <= 10; x++) {
+                for (int y = 0; y <= 10; y++) {
+                    for (int z = -10; z <= 10; z++) {
+                        final Location blockLocation = new Location(player.getWorld(),
+                                playerLocation.getX() + x,
+                                playerLocation.getY() + y,
+                                playerLocation.getZ() + z);
+                        blockLocation.getBlock().setType(Material.AIR);
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    private boolean createRoof1(CommandSender sender) {
+        if (sender instanceof Player) {                  // kontroluje jestli to poslal hrac
+            Player player = (Player) sender;             // vytvor promenu player a dej si do ni odesilatele sender
+            Location pozice = player.getLocation().clone(); //urcuje pozici hrace(promena)
+            pozice.add(0, 5, 0);                  //pricte 0 5 0
+            for (int j = 0; j < 3; j++) {
+                for (int i = 0; i < 10; i++) {
+                    pozice.add(1, 0, 0);         //pricte 1 0 0
+                    pozice.getBlock().setType(Material.STONE); //na tu pozici polozi kamen
+                }
+                pozice.add(-10, 0, 1);
+            }
+        }
+        return true;
+    }
+
+    private boolean createHouse(CommandSender sender) {
+        if (sender instanceof Player) {                  // kontroluje jestli to poslal hrac
+            Player player = (Player) sender;             // vytvor promenu player a dej si do ni odesilatele sender
+            Location pozice = player.getLocation().clone(); //urcuje pozici hrace(promena)
+            pozice.add(0, 5, 0);                  //pricte 0 5 0
+            for (int j = 0; j < 6; j++) {
+                for (int i = 0; i < 10; i++) {
+                    pozice.add(1, 0, 0);         //pricte 1 0 0
+                    pozice.getBlock().setType(Material.BLACK_CONCRETE); //na tu pozici polozi kamen
+                }
+                pozice.add(-10, 0, 1);
+            }
+        }
+        return true;
+    }
+
+    private boolean createRoof(CommandSender sender) {
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
+            Location pozice = player.getLocation().clone();
+            pozice.add(0, 0, 5);
+            pozice.getBlock().setType(Material.STONE);
+            pozice.add(1, 0, 0);
+            pozice.getBlock().setType(Material.STONE);
+            pozice.add(1, 0, 0);
+            pozice.getBlock().setType(Material.STONE);
+            pozice.add(1, 0, 0);
+            pozice.getBlock().setType(Material.STONE);
+            pozice.add(1, 0, 0);
+            pozice.getBlock().setType(Material.STONE);
+            pozice.add(1, 0, 0);
+            pozice.getBlock().setType(Material.STONE);
+            pozice.add(1, 0, 0);
+            pozice.getBlock().setType(Material.STONE);
+            pozice.add(1, 0, 0);
+            pozice.getBlock().setType(Material.STONE);
+        }
+        return true;
+    }
+
+    private boolean createPool(CommandSender sender) {
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
+            Location pozice = player.getLocation().clone();
+            vytvorMiBazen(pozice);
+        }
+        return true;
+    }
+
+
     private boolean createTownPortal(CommandSender sender) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
@@ -398,9 +426,7 @@ public class HackersPlugin extends JavaPlugin {
         }
         return true;
     }
-}
 
-      /*
 
     //PROMENY:
 
@@ -415,7 +441,10 @@ public class HackersPlugin extends JavaPlugin {
         }
         return true;
     }
+}
 
+
+    /*
     private boolean vytvorMirybnik(CommandSender sender) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
