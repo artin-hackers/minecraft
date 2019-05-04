@@ -81,7 +81,7 @@ public class HackersPlugin extends JavaPlugin {
             return createTeleporttostart(sender);
 
 
-        } else {
+       } else {
             Player player = (Player) sender;
             player.sendMessage("Unknown command!");
         }
@@ -240,25 +240,17 @@ public class HackersPlugin extends JavaPlugin {
     }
 
     private boolean createMagicshovel (CommandSender sender) {
-        if (sender instanceof Player) {
-                Player me = (Player) sender;
-                ItemStack axe = new ItemStack(Material.DIAMOND_SHOVEL, 1);
-                ItemMeta meta = axe.getItemMeta();
-                meta.setDisplayName("magickalopata");
-                axe.setItemMeta(meta);
-                me.getInventory().addItem(axe);
+    if (sender instanceof Player) {
+        Player me = (Player) sender;
+        ItemStack axe = new ItemStack(Material.DIAMOND_SHOVEL, 1);
+        ItemMeta meta = axe.getItemMeta();
+        meta.setDisplayName("magickalopata");
+        axe.setItemMeta(meta);
+        me.getInventory().addItem(axe);
 
-            }
-            return true;
         }
-
-
-
-
-
-
-
-
+        return true;
+    }
 
     private boolean spawnSpider(CommandSender sender) {
         if (sender instanceof Player) {
@@ -457,19 +449,15 @@ public class HackersPlugin extends JavaPlugin {
 
 
 
-
-
-
-
     private boolean createHouse(CommandSender sender) {
-        if (sender instanceof Player) {                  // kontroluje jestli to poslal hrac
-            Player player = (Player) sender;             // vytvor promenu player a dej si do ni odesilatele sender
-            Location pozice = player.getLocation().clone(); //urcuje pozici hrace(promena)
-            pozice.add(0, 5, 0);                  //pricte 0 5 0
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
+            Location pozice = player.getLocation().clone();
+            pozice.add(0, 5, 0);
             for (int j = 0; j < 6; j++) {
                 for (int i = 0; i < 10; i++) {
-                    pozice.add(1, 0, 0);         //pricte 1 0 0
-                    pozice.getBlock().setType(Material.BLACK_CONCRETE); //na tu pozici polozi kamen
+                    pozice.add(1, 0, 0);
+                    pozice.getBlock().setType(Material.BLACK_CONCRETE);
                 }
                 pozice.add(-10, 0, 1);
             }
@@ -510,11 +498,6 @@ public class HackersPlugin extends JavaPlugin {
         return true;
     }
 
-
-
-
-
-
     private boolean createTownPortal(CommandSender sender) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
@@ -534,7 +517,7 @@ public class HackersPlugin extends JavaPlugin {
         for (int i = -1; i <= 1; i++) {
             for (int j = -1; j <= 1; j++) {
                 pozice.add(1, 0, 0);
-                pozicebazenu.getBlock().setType(Material.BRICKS);
+                pozicebazenu.getBlock().setType(Material.WATER);
             }
         }
         return true;
