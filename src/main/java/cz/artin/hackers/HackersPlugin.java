@@ -73,6 +73,8 @@ public class HackersPlugin extends JavaPlugin {
             return createMagicarrow(sender);
         } else if (label.equalsIgnoreCase("magickydiamantovymec")) {
             return createMagicdiamondsword(sender);
+        } else if (label.equalsIgnoreCase("createFilipovasekera")) {
+            return createFilipovasekera(sender);
         } else if (label.equalsIgnoreCase("magickalopata")) {
             return createMagicshovel(sender);
         } else if (label.equalsIgnoreCase("nicicilopata")) {
@@ -247,6 +249,20 @@ public class HackersPlugin extends JavaPlugin {
         meta.setDisplayName("magickalopata");
         axe.setItemMeta(meta);
         me.getInventory().addItem(axe);
+
+        }
+        return true;
+    }
+
+
+    private boolean createFilipovasekera (CommandSender sender) {
+        if (sender instanceof Player) {
+            Player me = (Player) sender;
+            ItemStack axe = new ItemStack(Material.DIAMOND_AXE, 1);
+            ItemMeta meta = axe.getItemMeta();
+            meta.setDisplayName("Filipovasekera");
+            axe.setItemMeta(meta);
+            me.getInventory().addItem(axe);
 
         }
         return true;
@@ -516,7 +532,7 @@ public class HackersPlugin extends JavaPlugin {
         pozice.add(0, -1, 0);
         for (int i = -1; i <= 1; i++) {
             for (int j = -1; j <= 1; j++) {
-                pozice.add(1, 0, 0);
+                pozice.add(1, -1, 0);
                 pozicebazenu.getBlock().setType(Material.WATER);
             }
         }

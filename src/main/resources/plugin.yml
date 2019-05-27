@@ -57,6 +57,8 @@ commands:
     description: teleportuj hrace do mesta
   teleport:
     description: teleportuje hrace do mesta
+  createFilipovasekera:
+    description: vytvor Filipovusekeru
   teleportovatnazacatek:
     description: teleportuj na zacatek
   portal:

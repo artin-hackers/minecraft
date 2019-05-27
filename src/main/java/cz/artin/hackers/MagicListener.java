@@ -30,7 +30,7 @@ public class MagicListener implements Listener {
         if (event.getAction().equals(Action.LEFT_CLICK_AIR)) {
             ItemStack itemInMainHand = event.getPlayer().getInventory().getItemInMainHand();
             if (itemInMainHand != null && itemInMainHand.getItemMeta() != null) {
-                if (itemInMainHand.getItemMeta().getDisplayName().equals("filipovasekera")) {
+                if (itemInMainHand.getItemMeta().getDisplayName().equals("createFilipovasekera")) {
                     event.getPlayer().launchProjectile(Fireball.class);
                 }
                 if (itemInMainHand.getItemMeta().getDisplayName().equals("magickykrumpac")) {
